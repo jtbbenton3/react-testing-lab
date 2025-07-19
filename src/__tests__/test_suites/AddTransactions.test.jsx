@@ -1,4 +1,4 @@
-// src/__tests__/test_suites/AddTransactions.test.jsx
+
 import React from "react";
 import { describe, it, expect, vi } from "vitest";
 import { render, screen, fireEvent } from "@testing-library/react";
@@ -6,11 +6,11 @@ import App from "../../components/App";
 
 describe("Add Transactions", () => {
   it("adds a new transaction to the list and calls POST", async () => {
-    // Mock initial GET -> empty array
+    
     global.setFetchResponse([]);
     const { container } = render(<App />);
 
-    // Set up POST mock response
+    
     const newTxn = {
       id: "2",
       date: "2020-01-01",
@@ -31,7 +31,7 @@ describe("Add Transactions", () => {
       });
     });
 
-    // Fill out and submit the form
+    
     fireEvent.change(container.querySelector("input[name='date']"), {
       target: { value: "2020-01-01" },
     });
@@ -46,10 +46,10 @@ describe("Add Transactions", () => {
     });
     fireEvent.click(screen.getByRole("button", { name: /Add Transaction/i }));
 
-    // Expect the new transaction to appear
+    
     expect(await screen.findByText("New transaction")).toBeInTheDocument();
 
-    // Expect that we called fetch with a POST
+    
     expect(global.fetch).toHaveBeenCalledWith(
       expect.stringContaining("/transactions"),
       expect.objectContaining({ method: "POST" })

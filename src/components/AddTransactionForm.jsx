@@ -1,4 +1,4 @@
-// src/components/AddTransactionForm.jsx
+
 import React from "react";
 
 function AddTransactionForm({ postTransaction }) {
